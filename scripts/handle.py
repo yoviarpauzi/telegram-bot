@@ -78,7 +78,7 @@ async def button_handler(update: Update, context: CallbackContext) -> None:
             await query.message.reply_text("Anda memilih untuk memposting postingan.")
             user = getUser(users_id)
             if user[1] == 0:
-                await send_invoice(update, context)
+                await query.message.reply_text("Maaf token anda sudah habis untuk memposting postingan hari ini, coba lagi besok hari:D")
             else:
                 updateTokenUser(users_id=users_id, token=user[1] - 1)
                 await send_post_to_community(update=update, context=context, users_id=users_id)
